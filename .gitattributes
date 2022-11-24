@@ -1,2 +1,48 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+products = []
+new_products = []
+def enter_p():
+    x = input('Enter product name')
+    return x
+def add_p(p):
+    x = enter_p()
+    p.append(x)
+    
+    
+    
+def display():
+    print('the products are: ',products)
+    
+def add_another_p():
+    x = input('Y to add another N to stop')
+    y = x.upper()
+    if y == 'Y':
+        add_p(products)
+        add_another_p()
+    elif y == 'N':
+        display()
+    else:
+        print('invalid input')
+        add_another_p()
+        
+def to_lower_case():
+    x = 0
+    while x < len(products):
+        new_products.append(products[x].lower())
+        x = x+1
+        
+def search():
+    x = input('search for an item')
+    y = x.lower()
+    if x in new_products:
+        count = new_products.count(y)
+        total = len(new_products)
+        print(f'Number of {y} is {count}')
+        print(f'total number of items in products is:{total}')
+    else:
+        print('item not found')
+        
+        
+add_p(products)
+add_another_p()
+to_lower_case()
+search()
